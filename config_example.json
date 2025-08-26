@@ -1,0 +1,15 @@
+{
+    "random_id": {
+        "name": "Name of joined calendar",
+        "calendars": [
+            {
+                "name": "Name 1",
+                "url": "ical.link"
+            },
+            {
+                "name": "Name 2",
+                "url": "ical.link"
+            }
+        ]
+    }
+}
