@@ -21,7 +21,7 @@ const limiter = rateLimit({
 
 const __filename = new URL('', import.meta.url).pathname;
 const __dirname = path.dirname(__filename);
-const config = JSON.parse(fs.readFileSync(path.join(__dirname, 'config.json'), 'utf-8'));
+const config = JSON.parse(fs.readFileSync(path.join(__dirname, 'config', 'config.json'), 'utf-8'));
 
 // Middleware
 app.use(express.json());
