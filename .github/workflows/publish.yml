@@ -18,6 +18,8 @@ jobs:
       attestations: write
       id-token: write
     steps:
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
       - name: Checkout repository
         uses: actions/checkout@v4
       - name: Log in to the Container registry
