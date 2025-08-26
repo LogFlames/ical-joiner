@@ -30,6 +30,20 @@ app.use(limiter);
 // Routes
 app.get('/ical/:id', async (req, res) => {
     const id = req.params.id;
+    let exclude = req.query.exclude;
+
+    // Normalize exclude to an array of lower-case names
+    if (exclude) {
+        if (Array.isArray(exclude)) {
+            exclude = exclude.map(s => String(s).toLowerCase());
+        } else if (typeof exclude === 'string') {
+            exclude = exclude.split(',').map(s => s.trim().toLowerCase());
+        } else {
+            exclude = [String(exclude).toLowerCase()];
+        }
+    } else {
+        exclude = [];
+    }
 
     if (!(id in config)) {
         res.status(404).send('Calendar not found');
@@ -38,11 +52,13 @@ app.get('/ical/:id', async (req, res) => {
     
     var results;
     try {
-        const calendarPromises = config[id].calendars.map(calendar =>
+        const calendarPromises = config[id].calendars
+            .filter(calendar => !exclude.includes(calendar.name.toLowerCase()))
+            .map(calendar =>
             ical_parser.async.fromURL(calendar.url)
                 .then(events => ({ name: calendar.name, events }))
                 .catch(err => ({ name: calendar.name, error: err.message, events: {} }))
-        );
+            );
 
         results = await Promise.all(calendarPromises);
     } catch (err) {
