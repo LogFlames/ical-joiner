@@ -1,0 +1,27 @@
+{
+  "type": "module",
+  "name": "ical-joiner",
+  "version": "1.0.0",
+  "description": "A project to join multiple peoples ical calenders, naming whos calendar it is",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LogFlames/ical-joiner.git"
+  },
+  "author": "Elias Lundell",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LogFlames/ical-joiner/issues"
+  },
+  "homepage": "https://github.com/LogFlames/ical-joiner#readme",
+  "dependencies": {
+    "express": "^5.1.0",
+    "express-rate-limit": "^8.0.1",
+    "ical-generator": "^9.0.0",
+    "node-ical": "^0.20.1"
+  }
+}
