@@ -81,6 +81,8 @@ ical-joiner:
     restart: 'unless-stopped'
 ```
 
+In this example `config.json` would be placed in the `./config/ical-joiner/` folder. Inside the docker container it will try to read the config at `/app/config/config.json`.
+
 ## Pull requests and issues
 
 I would be very happy to recieve pull requests or issues if anyone wants to run this themselves. The potential is way more than I coded right now, mainly that it is missing a config webpage and everything is done through the config.json file, multi langual support (currently hard coded to Swedish), and custom join patterns.
